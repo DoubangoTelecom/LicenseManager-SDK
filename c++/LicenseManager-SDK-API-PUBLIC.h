@@ -62,10 +62,11 @@ namespace LicenseManagerSdk
 		* \param url The server URL to connect to. Should be something like 'https://localhost:3600'.
 		* \param masterKey Your secret <a href="https://www.doubango.org/SDKs/LicenseManager/docs/Jargon.html#master-key">master key</a>. 
 		* \param response The JSON response from the server.
+		* \param comment Optional field to add comment to the slave. This could be helpful if you want to track the slaves. We recommend adding the end user contact information in this field.
 		* \param timeoutInMillis Connection timeout in milliseconds.
 		* \returns 0 if success, non-zero error code otherwise.
 		*/
-		static int createSlave(const std::string& url, const std::string& masterKey, std::string& response, const long timeoutInMillis = 10 * 1000)
+		static int createSlave(const std::string& url, const std::string& masterKey, std::string& response, const std::string& comment = "", const long timeoutInMillis = 10 * 1000)
 		{
 			LICMGR_SDK_PRINT_INFO("Call: %s", __FUNCTION__);
 
@@ -81,7 +82,8 @@ namespace LicenseManagerSdk
 			url_ += "slaves";
 
 			const std::string json_ = std::string("{") +
-				std::string("\"masterKey\": \"") + masterKey + std::string("\"") +
+				std::string("\"masterKey\": \"") + masterKey + std::string("\",") +
+				std::string("\"comment\": \"") + comment + std::string("\"") +
 				std::string("}");
 
 			return LicenseManager::post(url_, json_, response);
