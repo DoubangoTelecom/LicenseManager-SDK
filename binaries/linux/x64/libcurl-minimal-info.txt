@@ -1,8 +1,8 @@
 ### libcurl.so.4.7.0 ###
-wget https://github.com/curl/curl/archive/refs/tags/curl-7_77_0.tar.gz
-tar xzvf curl-7_77_0.tar.gz
-cd curl-curl-7_77_0
+wget https://github.com/curl/curl/archive/refs/tags/curl-7_61_1.tar.gz
+tar xzvf curl-7_61_1.tar.gz
+cd curl-curl-7_61_1
 autoreconf -fi
-./configure --disable-ipv6 --disable-manual --disable-rtsp --without-openssl --without-zlib
+./configure --disable-ipv6 --disable-manual --disable-rtsp --without-ssl --without-openssl --without-zlib
 make
--> curl-curl-7_77_0/lib/.libs/libcurl.so.4.7.0
+-> curl-curl-7_61_1/lib/.libs/libcurl.so.4.5.0
